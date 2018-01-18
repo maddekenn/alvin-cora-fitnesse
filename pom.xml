@@ -148,11 +148,7 @@
 				<directory>FitNesseRoot</directory>
 				<filtering>true</filtering>
 				<includes>
-					<include>DocumentationPage/</include>
-					<include>FrontPage/</include>
-					<include>JsClient/</include>
-					<include>RestFixtureInstallTest/</include>
-					<include>TheRestTests/</include>
+					<include>TheAlvinTests/</include>
 					<include>properties</include>
 				</includes>
 				<excludes>
