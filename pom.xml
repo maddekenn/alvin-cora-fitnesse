@@ -18,10 +18,10 @@
 		<version>0.6-SNAPSHOT</version>
 	</parent>
 
-	<artifactId>fitnesse</artifactId>
+	<artifactId>alvincorafitnesse</artifactId>
 	<packaging>jar</packaging>
-	<version>0.3-SNAPSHOT</version>
-	<name>Fitnesse</name>
+	<version>0.1-SNAPSHOT</version>
+	<name>Alvin Cora Fitnesse</name>
 
 	<properties>
 	<json.version>0.3-SNAPSHOT</json.version>
