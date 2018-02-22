@@ -1,0 +1,24 @@
+---
+Test
+---
+!contents -R2 -g -p -f -h
+!1 Testing recordType place
+It should be possible to read the recordType for place from the REST API.
+
+!***> Read place recordType
+
+!| RecordEndpointFixture |
+| authToken | type | id | testReadRecord? | getStatusType? |
+| $adminAuthToken | recordType | place | | OK |
+
+*!
+It should be possible to read the top level metadata groups for place from the REST API
+
+!***> Read metadata groups for place
+
+!| RecordEndpointFixture |
+| authToken | type | id | testReadRecord? | getStatusType? |
+| $adminAuthToken | metadataGroup | placeNewGroup | | OK |
+| $adminAuthToken | metadataGroup | placeGroup | | OK |
+
+*!
