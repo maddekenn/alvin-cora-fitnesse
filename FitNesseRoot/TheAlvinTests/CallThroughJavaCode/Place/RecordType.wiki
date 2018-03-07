@@ -12,13 +12,43 @@ It should be possible to read the recordType for place from the REST API.
 | $adminAuthToken | recordType | place | | OK |
 
 *!
-It should be possible to read the top level metadata groups for place from the REST API
-
-!***> Read metadata groups for place
+It should be possible to read the top level metadata group for a new place from the REST API
+!***> Load placeNewGroup for place to use in tests
 
 !| RecordEndpointFixture |
-| authToken | type | id | testReadRecord? | getStatusType? |
-| $adminAuthToken | metadataGroup | placeNewGroup | | OK |
-| $adminAuthToken | metadataGroup | placeGroup | | OK |
+| type | id | testReadRecordAndStoreJson? |
+| metadataGroup | placeNewGroup | |
+
+*!
+Tests for metadata for creating a new place
+!***> Check children of placeNewGroup
+
+!| MetadataLinkFixture |
+| linkedRecordType | linkedRecordId | getRepeatMin? | getRepeatMax? |
+| metadataGroup | recordInfoBibsysNewGroup | 1 | 1 |
+| metadataGroup | nameAuthorizedGroup | 1 | 1 |
+| metadataGroup | nameAlternativeGroup | 0 | X |
+| metadataRecordLink | countryLink | 0 | 1 |
+| metadataGroup | coordinatesGroup | 0 | 1 |
+
+*!
+It should be possible to read the top level metadata group for an existing place from the REST API
+!***> Load placeGroup for place to use in tests
+
+!| RecordEndpointFixture |
+| type | id | testReadRecordAndStoreJson? |
+| metadataGroup | placeGroup | |
+
+*!
+Tests for metadata for updating place
+!***> Check children of placeGroup
+
+!| MetadataLinkFixture |
+| linkedRecordType | linkedRecordId | getRepeatMin? | getRepeatMax? |
+| metadataGroup | recordInfoGroup | 1 | 1 |
+| metadataGroup | nameAuthorizedGroup | 1 | 1 |
+| metadataGroup | nameAlternativeGroup | 0 | X |
+| metadataRecordLink | countryLink | 0 | 1 |
+| metadataGroup | coordinatesGroup | 0 | 1 |
 
 *!
