@@ -37,6 +37,7 @@
 		<javax.ws.rs.version>2.0.1</javax.ws.rs.version>
 		<fitnesse.version>20161106</fitnesse.version>
 		<fitnesseintegration.version>0.1-SNAPSHOT</fitnesseintegration.version>
+		<alvintocorastorage.version>0.1-SNAPSHOT</alvintocorastorage.version>
 	</properties>
 
 	<scm>
@@ -83,6 +84,12 @@
 			<groupId>se.uu.ub.cora</groupId>
 			<artifactId>fitnesseintegration</artifactId>
 			<version>${fitnesseintegration.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>se.uu.ub.cora</groupId>
+			<artifactId>alvintocorastorage</artifactId>
+			<version>${alvintocorastorage.version}</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
