@@ -40,7 +40,7 @@ public class AlvinToCoraFormatFixtureTest {
 	public void testNoConverterErrorClassname() throws Exception {
 		AlvinFitnesseDependencyProvider.setConverterFactoryClassName(
 				"se.uu.ub.alvin.cora.fitnesse.AlvinToCoraConverterThrowsExceptionFactorySpy");
-		assertEquals(fixture.getJson(), "can not read xml");
+		assertEquals(fixture.getJson(), "can not convert xml:java.lang.RuntimeException");
 	}
 
 	@Test
@@ -58,17 +58,31 @@ public class AlvinToCoraFormatFixtureTest {
 	}
 
 	@Test
-	public void testXMLIsSentToConverter() throws Exception {
-		String alvinXML = "some xml";
+	public void testPreIsRemovedXMLIsSentToConverter() throws Exception {
+		String alvinXML = "<pre>some xml</pre>";
 		fixture.setAlvinXML(alvinXML);
 		fixture.getJson();
 		assertEquals(converterFactorySpy.converterSpy.xml, "some xml");
 	}
 
 	@Test
-	public void testReturnedTextIsFromConverter() throws Exception {
-		String returnedJson = fixture.getJson();
-		assertEquals(returnedJson, "{\"name\": \"DataGroupReturnedFromSpy\"}");
+	public void testRemoveHTMLEscapeBeforeXmlIsSentToConverter() throws Exception {
+		String alvinXML = "<pre>&lt;place&gt;some xml&lt;/place&gt;</pre>";
+		fixture.setAlvinXML(alvinXML);
+		fixture.getJson();
+		assertEquals(converterFactorySpy.converterSpy.xml, "<place>some xml</place>");
 	}
 
+	@Test
+	public void testReturnedTextIsFromConverter() throws Exception {
+		String returnedJson = fixture.getJson();
+		assertEquals(returnedJson, "{\"name\":\"DataGroupReturnedFromSpy\"}");
+	}
+
+	@Test
+	public void testGetAlvinXML() throws Exception {
+		String alvinXML = "some Xml";
+		fixture.setAlvinXML(alvinXML);
+		assertEquals(fixture.getAlvinXML(), "some Xml");
+	}
 }

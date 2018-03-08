@@ -9,6 +9,10 @@
 !| script | DependencyProvider |
 | setHttpHandlerFactoryClassName | se.uu.ub.cora.httphandler.HttpHandlerFactoryImp |
 
+!| script | AlvinFitnesseDependencyProvider |
+| setConverterFactoryClassName | se.uu.ub.cora.alvin.tocorastorage.AlvinToCoraConverterFactoryImp |
+
+
 !2 Login
 !***> Login for admin
 

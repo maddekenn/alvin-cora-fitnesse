@@ -18,6 +18,8 @@
  */
 package se.uu.ub.alvin.cora.fitnesse;
 
+import org.apache.commons.lang.StringEscapeUtils;
+
 import se.uu.ub.cora.alvin.tocorastorage.AlvinToCoraConverter;
 import se.uu.ub.cora.alvin.tocorastorage.AlvinToCoraConverterFactory;
 import se.uu.ub.cora.bookkeeper.data.DataGroup;
@@ -32,7 +34,12 @@ public class AlvinToCoraFormatFixture {
 	private String xml;
 
 	public void setAlvinXML(String alvinXML) {
-		this.xml = alvinXML;
+		this.xml = removeExtraFormatingAddedByFitnesse(alvinXML);
+	}
+
+	private String removeExtraFormatingAddedByFitnesse(String alvinXML) {
+		String tempXml = alvinXML.replaceAll("<pre>", "").replaceAll("</pre>", "");
+		return StringEscapeUtils.unescapeHtml(tempXml);
 	}
 
 	public void setType(String type) {
@@ -43,7 +50,7 @@ public class AlvinToCoraFormatFixture {
 		try {
 			return tryToConvertXMLToJson();
 		} catch (Exception e) {
-			return "can not read xml";
+			return "can not convert xml:" + e;
 		}
 	}
 
@@ -65,13 +72,17 @@ public class AlvinToCoraFormatFixture {
 
 	private String convertDataGroupToJson(DataGroup fromXML) {
 		DataToJsonConverter dataToJsonConverter = createDataGroupToJsonConverter(fromXML);
-		return dataToJsonConverter.toJson();
+		return dataToJsonConverter.toJsonCompactFormat();
 	}
 
 	private DataToJsonConverter createDataGroupToJsonConverter(DataGroup dataGroup) {
 		DataToJsonConverterFactoryImp dataToJsonConverterFactory = new DataToJsonConverterFactoryImp();
 		JsonBuilderFactory factory = new OrgJsonBuilderFactoryAdapter();
 		return dataToJsonConverterFactory.createForDataElement(factory, dataGroup);
+	}
+
+	public String getAlvinXML() {
+		return xml;
 	}
 
 }
