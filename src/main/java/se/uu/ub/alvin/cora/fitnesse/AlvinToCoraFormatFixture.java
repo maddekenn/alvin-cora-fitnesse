@@ -18,7 +18,7 @@
  */
 package se.uu.ub.alvin.cora.fitnesse;
 
-import org.apache.commons.lang.StringEscapeUtils;
+import org.apache.commons.text.StringEscapeUtils;
 
 import se.uu.ub.cora.alvin.tocorastorage.AlvinToCoraConverter;
 import se.uu.ub.cora.alvin.tocorastorage.AlvinToCoraConverterFactory;
@@ -39,7 +39,7 @@ public class AlvinToCoraFormatFixture {
 
 	private String removeExtraFormatingAddedByFitnesse(String alvinXML) {
 		String tempXml = alvinXML.replaceAll("<pre>", "").replaceAll("</pre>", "");
-		return StringEscapeUtils.unescapeHtml(tempXml);
+		return StringEscapeUtils.unescapeHtml4(tempXml);
 	}
 
 	public void setType(String type) {
