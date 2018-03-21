@@ -30,7 +30,7 @@ public class AlvinFitnesseDependencyProvider {
 		super();
 	}
 
-	public static void setConverterFactoryClassName(String converterFactoryClassName) {
+	public static synchronized void setConverterFactoryClassName(String converterFactoryClassName) {
 		Constructor<?> constructor;
 		try {
 			constructor = Class.forName(converterFactoryClassName).getConstructor();
