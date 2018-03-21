@@ -20,10 +20,10 @@ package se.uu.ub.alvin.cora.fitnesse;
 
 import java.lang.reflect.Constructor;
 
-import se.uu.ub.cora.alvin.tocorastorage.AlvinToCoraConverterFactory;
+import se.uu.ub.cora.alvin.tocorastorage.fedora.AlvinFedoraToCoraConverterFactory;
 
 public class AlvinFitnesseDependencyProvider {
-	private static AlvinToCoraConverterFactory converterFactory;
+	private static AlvinFedoraToCoraConverterFactory converterFactory;
 
 	public AlvinFitnesseDependencyProvider() {
 		// needs a public constructor for fitnesse to work
@@ -34,13 +34,13 @@ public class AlvinFitnesseDependencyProvider {
 		Constructor<?> constructor;
 		try {
 			constructor = Class.forName(converterFactoryClassName).getConstructor();
-			converterFactory = (AlvinToCoraConverterFactory) constructor.newInstance();
+			converterFactory = (AlvinFedoraToCoraConverterFactory) constructor.newInstance();
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 	}
 
-	public static AlvinToCoraConverterFactory getConverterFactory() {
+	public static AlvinFedoraToCoraConverterFactory getConverterFactory() {
 		return converterFactory;
 	}
 }

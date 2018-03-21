@@ -22,8 +22,8 @@ import static org.testng.Assert.assertTrue;
 
 import org.testng.annotations.Test;
 
-import se.uu.ub.cora.alvin.tocorastorage.AlvinToCoraConverterFactory;
-import se.uu.ub.cora.alvin.tocorastorage.AlvinToCoraConverterFactoryImp;
+import se.uu.ub.cora.alvin.tocorastorage.fedora.AlvinFedoraToCoraConverterFactory;
+import se.uu.ub.cora.alvin.tocorastorage.fedora.AlvinFedoraToCoraConverterFactoryImp;
 
 public class AlvinFitnesseDependencyProviderTest {
 	@Test
@@ -46,10 +46,10 @@ public class AlvinFitnesseDependencyProviderTest {
 	@Test
 	public void testFactorHttpHandler() {
 		AlvinFitnesseDependencyProvider.setConverterFactoryClassName(
-				"se.uu.ub.cora.alvin.tocorastorage.AlvinToCoraConverterFactoryImp");
-		AlvinToCoraConverterFactory converterFactory = AlvinFitnesseDependencyProvider
+				"se.uu.ub.cora.alvin.tocorastorage.fedora.AlvinFedoraToCoraConverterFactoryImp");
+		AlvinFedoraToCoraConverterFactory converterFactory = AlvinFitnesseDependencyProvider
 				.getConverterFactory();
-		assertTrue(converterFactory instanceof AlvinToCoraConverterFactoryImp);
+		assertTrue(converterFactory instanceof AlvinFedoraToCoraConverterFactoryImp);
 	}
 
 }
