@@ -10,7 +10,7 @@
 | setHttpHandlerFactoryClassName | se.uu.ub.cora.httphandler.HttpHandlerFactoryImp |
 
 !| script | AlvinFitnesseDependencyProvider |
-| setConverterFactoryClassName | se.uu.ub.cora.alvin.tocorastorage.AlvinToCoraConverterFactoryImp |
+| setConverterFactoryClassName | se.uu.ub.cora.alvin.tocorastorage.fedora.AlvinFedoraToCoraConverterFactoryImp |
 
 
 !2 Login
