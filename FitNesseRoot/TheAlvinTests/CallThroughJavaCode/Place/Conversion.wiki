@@ -303,3 +303,322 @@ Test
 }}} | {"children":[{"children":[{"children":[{"name":"linkedRecordType","value":"recordType"},{"name":"linkedRecordId","value":"place"}],"name":"type"},{"name":"id","value":"alvin-place:24_noCountry"},{"children":[{"name":"linkedRecordType","value":"system"},{"name":"linkedRecordId","value":"alvin"}],"name":"dataDivider"},{"children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}],"name":"createdBy"},{"name":"tsCreated","value":"2014-12-18 22:16:44.623"},{"children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}],"name":"updatedBy"},{"name":"tsUpdated","value":"2016-02-12 10:29:43.147"}],"name":"recordInfo"},{"children":[{"children":[{"name":"value","value":"Lund"}],"name":"namePart","attributes":{"type":"defaultName"}}],"name":"name","attributes":{"type":"authorized"}},{"children":[{"name":"latitude","value":"55.7"},{"name":"longitude","value":"13.18"}],"name":"coordinates"}],"name":"authority"} |
 
 *!
+!***> Test conversion with missing coordinates for place from XML stored in Fedora to Coras Json format
+
+| Alvin To Cora Format Fixture |
+| type | AlvinXML | getJson? |
+| place | {{{ <place id="1">
+  <pid>alvin-place:24</pid>
+  <dsId>METADATA</dsId>
+  <recordInfo id="2">
+    <externalDs>false</externalDs>
+    <lastAction>UPDATED</lastAction>
+    <created id="3">
+      <date id="4">2014-12-18 22:16:44.623 UTC</date>
+      <dateInStorage id="5">2014-12-18 22:16:44.919 UTC</dateInStorage>
+      <user class="seamUser" id="6">
+        <lastUpdated class="sql-timestamp" id="7">2014-04-17 08:12:52.806</lastUpdated>
+        <id>1</id>
+        <userId>test</userId>
+        <domain>uu</domain>
+        <firstName>Test</firstName>
+        <lastName>TEstsson</lastName>
+        <email>test.testsson@ub.uu.se</email>
+      </user>
+      <note>Place created through web gui</note>
+      <type>CREATED</type>
+    </created>
+    <updated id="8">
+      <userAction reference="3"/>
+      <userAction id="9">
+        <date id="10">2014-12-18 22:18:01.276 UTC</date>
+        <dateInStorage id="11">2014-12-18 22:18:01.579 UTC</dateInStorage>
+        <user class="seamUser" id="12">
+          <lastUpdated class="sql-timestamp" id="13">2014-04-17 08:12:52.806</lastUpdated>
+          <id>1</id>
+          <userId>test</userId>
+          <domain>uu</domain>
+          <firstName>Test</firstName>
+          <lastName>Testsson</lastName>
+          <email>test.testsson@ub.uu.se</email>
+        </user>
+        <note>Place updated through web gui</note>
+        <type>UPDATED</type>
+      </userAction>
+      <userAction id="14">
+        <date id="15">2016-02-12 10:29:43.147 UTC</date>
+        <user class="seamUser" id="16">
+          <lastUpdated class="sql-timestamp" id="17">2014-04-17 08:12:53.455</lastUpdated>
+          <id>318</id>
+          <userId>different</userId>
+          <domain>lu</domain>
+          <firstName>Different</firstName>
+          <lastName>Test</lastName>
+          <email>test.testsson@ub.lu.se</email>
+        </user>
+        <note>Place updated through web gui</note>
+        <type>UPDATED</type>
+      </userAction>
+    </updated>
+  </recordInfo>
+  <country class="country">
+    <lastUpdated class="sql-timestamp" id="19">2014-04-17 08:12:48.8</lastUpdated>
+    <defaultName>Sverige</defaultName>
+    <localisedNames id="20">
+      <entry>
+        <string>en</string>
+        <string>Sweden</string>
+      </entry>
+    </localisedNames>
+    <alpha2Code>SE</alpha2Code>
+    <alpha3Code>SWE</alpha3Code>
+    <numericalCode>752</numericalCode>
+    <marcCode>sw</marcCode>
+  </country>
+  <regions id="21"/>
+  <defaultPlaceName id="22">
+    <deleted>false</deleted>
+    <name>Lund</name>
+  </defaultPlaceName>
+  <placeNameForms id="23">
+    <entry>
+      <string>alvin-place:24:0</string>
+      <placeNameForm id="24">
+        <id>alvin-place:24:0</id>
+        <deleted>false</deleted>
+        <name>Londini Gothorum</name>
+        <language id="25">
+          <lastUpdated class="sql-timestamp" id="26">2014-04-17 08:12:51.134</lastUpdated>
+          <defaultName>Latin</defaultName>
+          <localisedNames id="27">
+            <entry>
+              <string>en</string>
+              <string>Latin</string>
+            </entry>
+          </localisedNames>
+          <alpha3Code>lat</alpha3Code>
+          <alpha2Code>la</alpha2Code>
+        </language>
+      </placeNameForm>
+    </entry>
+  </placeNameForms>
+  <identifiers id="28"/>
+  <longitude>13.18</longitude>
+  <localIdentifiers>
+    <localIdentifier>
+      <type class="localIdentifierType">
+        <lastUpdated class="sql-timestamp">2014-04-17 08:49:50.65</lastUpdated>
+        <defaultName>Waller-id</defaultName>
+        <localisedNames/>
+        <code>waller</code>
+        <id>114</id>
+        <internal>false</internal>
+        <organisationUnitId>2</organisationUnitId>
+        <unique>false</unique>
+      </type>
+      <text>873</text>
+    </localIdentifier>
+  </localIdentifiers>
+</place>
+}}} | {"children":[{"children":[{"children":[{"name":"linkedRecordType","value":"recordType"},{"name":"linkedRecordId","value":"place"}],"name":"type"},{"name":"id","value":"alvin-place:24"},{"children":[{"name":"linkedRecordType","value":"system"},{"name":"linkedRecordId","value":"alvin"}],"name":"dataDivider"},{"children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}],"name":"createdBy"},{"name":"tsCreated","value":"2014-12-18 22:16:44.623"},{"children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}],"name":"updatedBy"},{"name":"tsUpdated","value":"2016-02-12 10:29:43.147"}],"name":"recordInfo"},{"children":[{"children":[{"name":"value","value":"Lund"}],"name":"namePart","attributes":{"type":"defaultName"}}],"name":"name","attributes":{"type":"authorized"}},{"children":[{"name":"linkedRecordType","value":"country"},{"name":"linkedRecordId","value":"SE"}],"name":"country"}],"name":"authority"} |
+| place | {{{ <place id="1">
+  <pid>alvin-place:24_noCountry</pid>
+  <dsId>METADATA</dsId>
+  <recordInfo id="2">
+    <externalDs>false</externalDs>
+    <lastAction>UPDATED</lastAction>
+    <created id="3">
+      <date id="4">2014-12-18 22:16:44.623 UTC</date>
+      <dateInStorage id="5">2014-12-18 22:16:44.919 UTC</dateInStorage>
+      <user class="seamUser" id="6">
+        <lastUpdated class="sql-timestamp" id="7">2014-04-17 08:12:52.806</lastUpdated>
+        <id>1</id>
+        <userId>test</userId>
+        <domain>uu</domain>
+        <firstName>Test</firstName>
+        <lastName>TEstsson</lastName>
+        <email>test.testsson@ub.uu.se</email>
+      </user>
+      <note>Place created through web gui</note>
+      <type>CREATED</type>
+    </created>
+    <updated id="8">
+      <userAction reference="3"/>
+      <userAction id="9">
+        <date id="10">2014-12-18 22:18:01.276 UTC</date>
+        <dateInStorage id="11">2014-12-18 22:18:01.579 UTC</dateInStorage>
+        <user class="seamUser" id="12">
+          <lastUpdated class="sql-timestamp" id="13">2014-04-17 08:12:52.806</lastUpdated>
+          <id>1</id>
+          <userId>test</userId>
+          <domain>uu</domain>
+          <firstName>Test</firstName>
+          <lastName>Testsson</lastName>
+          <email>test.testsson@ub.uu.se</email>
+        </user>
+        <note>Place updated through web gui</note>
+        <type>UPDATED</type>
+      </userAction>
+      <userAction id="14">
+        <date id="15">2016-02-12 10:29:43.147 UTC</date>
+        <user class="seamUser" id="16">
+          <lastUpdated class="sql-timestamp" id="17">2014-04-17 08:12:53.455</lastUpdated>
+          <id>318</id>
+          <userId>different</userId>
+          <domain>lu</domain>
+          <firstName>Different</firstName>
+          <lastName>Test</lastName>
+          <email>test.testsson@ub.lu.se</email>
+        </user>
+        <note>Place updated through web gui</note>
+        <type>UPDATED</type>
+      </userAction>
+    </updated>
+  </recordInfo>
+  <regions id="21"/>
+  <defaultPlaceName id="22">
+    <deleted>false</deleted>
+    <name>Lund</name>
+  </defaultPlaceName>
+  <placeNameForms id="23">
+    <entry>
+      <string>alvin-place:24:0</string>
+      <placeNameForm id="24">
+        <id>alvin-place:24:0</id>
+        <deleted>false</deleted>
+        <name>Londini Gothorum</name>
+        <language id="25">
+          <lastUpdated class="sql-timestamp" id="26">2014-04-17 08:12:51.134</lastUpdated>
+          <defaultName>Latin</defaultName>
+          <localisedNames id="27">
+            <entry>
+              <string>en</string>
+              <string>Latin</string>
+            </entry>
+          </localisedNames>
+          <alpha3Code>lat</alpha3Code>
+          <alpha2Code>la</alpha2Code>
+        </language>
+      </placeNameForm>
+    </entry>
+  </placeNameForms>
+  <identifiers id="28"/>
+  <latitude>55.7</latitude>
+  <localIdentifiers>
+    <localIdentifier>
+      <type class="localIdentifierType">
+        <lastUpdated class="sql-timestamp">2014-04-17 08:49:50.65</lastUpdated>
+        <defaultName>Waller-id</defaultName>
+        <localisedNames/>
+        <code>waller</code>
+        <id>114</id>
+        <internal>false</internal>
+        <organisationUnitId>2</organisationUnitId>
+        <unique>false</unique>
+      </type>
+      <text>873</text>
+    </localIdentifier>
+  </localIdentifiers>
+</place>
+}}} | {"children":[{"children":[{"children":[{"name":"linkedRecordType","value":"recordType"},{"name":"linkedRecordId","value":"place"}],"name":"type"},{"name":"id","value":"alvin-place:24_noCountry"},{"children":[{"name":"linkedRecordType","value":"system"},{"name":"linkedRecordId","value":"alvin"}],"name":"dataDivider"},{"children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}],"name":"createdBy"},{"name":"tsCreated","value":"2014-12-18 22:16:44.623"},{"children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}],"name":"updatedBy"},{"name":"tsUpdated","value":"2016-02-12 10:29:43.147"}],"name":"recordInfo"},{"children":[{"children":[{"name":"value","value":"Lund"}],"name":"namePart","attributes":{"type":"defaultName"}}],"name":"name","attributes":{"type":"authorized"}}],"name":"authority"} |
+| place | {{{ <place id="1">
+  <pid>alvin-place:24_noCountry</pid>
+  <dsId>METADATA</dsId>
+  <recordInfo id="2">
+    <externalDs>false</externalDs>
+    <lastAction>UPDATED</lastAction>
+    <created id="3">
+      <date id="4">2014-12-18 22:16:44.623 UTC</date>
+      <dateInStorage id="5">2014-12-18 22:16:44.919 UTC</dateInStorage>
+      <user class="seamUser" id="6">
+        <lastUpdated class="sql-timestamp" id="7">2014-04-17 08:12:52.806</lastUpdated>
+        <id>1</id>
+        <userId>test</userId>
+        <domain>uu</domain>
+        <firstName>Test</firstName>
+        <lastName>TEstsson</lastName>
+        <email>test.testsson@ub.uu.se</email>
+      </user>
+      <note>Place created through web gui</note>
+      <type>CREATED</type>
+    </created>
+    <updated id="8">
+      <userAction reference="3"/>
+      <userAction id="9">
+        <date id="10">2014-12-18 22:18:01.276 UTC</date>
+        <dateInStorage id="11">2014-12-18 22:18:01.579 UTC</dateInStorage>
+        <user class="seamUser" id="12">
+          <lastUpdated class="sql-timestamp" id="13">2014-04-17 08:12:52.806</lastUpdated>
+          <id>1</id>
+          <userId>test</userId>
+          <domain>uu</domain>
+          <firstName>Test</firstName>
+          <lastName>Testsson</lastName>
+          <email>test.testsson@ub.uu.se</email>
+        </user>
+        <note>Place updated through web gui</note>
+        <type>UPDATED</type>
+      </userAction>
+      <userAction id="14">
+        <date id="15">2016-02-12 10:29:43.147 UTC</date>
+        <user class="seamUser" id="16">
+          <lastUpdated class="sql-timestamp" id="17">2014-04-17 08:12:53.455</lastUpdated>
+          <id>318</id>
+          <userId>different</userId>
+          <domain>lu</domain>
+          <firstName>Different</firstName>
+          <lastName>Test</lastName>
+          <email>test.testsson@ub.lu.se</email>
+        </user>
+        <note>Place updated through web gui</note>
+        <type>UPDATED</type>
+      </userAction>
+    </updated>
+  </recordInfo>
+  <regions id="21"/>
+  <defaultPlaceName id="22">
+    <deleted>false</deleted>
+    <name>Lund</name>
+  </defaultPlaceName>
+  <placeNameForms id="23">
+    <entry>
+      <string>alvin-place:24:0</string>
+      <placeNameForm id="24">
+        <id>alvin-place:24:0</id>
+        <deleted>false</deleted>
+        <name>Londini Gothorum</name>
+        <language id="25">
+          <lastUpdated class="sql-timestamp" id="26">2014-04-17 08:12:51.134</lastUpdated>
+          <defaultName>Latin</defaultName>
+          <localisedNames id="27">
+            <entry>
+              <string>en</string>
+              <string>Latin</string>
+            </entry>
+          </localisedNames>
+          <alpha3Code>lat</alpha3Code>
+          <alpha2Code>la</alpha2Code>
+        </language>
+      </placeNameForm>
+    </entry>
+  </placeNameForms>
+  <identifiers id="28"/>
+  <localIdentifiers>
+    <localIdentifier>
+      <type class="localIdentifierType">
+        <lastUpdated class="sql-timestamp">2014-04-17 08:49:50.65</lastUpdated>
+        <defaultName>Waller-id</defaultName>
+        <localisedNames/>
+        <code>waller</code>
+        <id>114</id>
+        <internal>false</internal>
+        <organisationUnitId>2</organisationUnitId>
+        <unique>false</unique>
+      </type>
+      <text>873</text>
+    </localIdentifier>
+  </localIdentifiers>
+</place>
+}}} | {"children":[{"children":[{"children":[{"name":"linkedRecordType","value":"recordType"},{"name":"linkedRecordId","value":"place"}],"name":"type"},{"name":"id","value":"alvin-place:24_noCountry"},{"children":[{"name":"linkedRecordType","value":"system"},{"name":"linkedRecordId","value":"alvin"}],"name":"dataDivider"},{"children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}],"name":"createdBy"},{"name":"tsCreated","value":"2014-12-18 22:16:44.623"},{"children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}],"name":"updatedBy"},{"name":"tsUpdated","value":"2016-02-12 10:29:43.147"}],"name":"recordInfo"},{"children":[{"children":[{"name":"value","value":"Lund"}],"name":"namePart","attributes":{"type":"defaultName"}}],"name":"name","attributes":{"type":"authorized"}}],"name":"authority"} |
+
+*!
