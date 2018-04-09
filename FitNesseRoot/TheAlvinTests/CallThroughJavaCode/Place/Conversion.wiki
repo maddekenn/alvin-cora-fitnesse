@@ -622,3 +622,41 @@ Test
 }}} | {"children":[{"children":[{"children":[{"name":"linkedRecordType","value":"recordType"},{"name":"linkedRecordId","value":"place"}],"name":"type"},{"name":"id","value":"alvin-place:24_noCountry"},{"children":[{"name":"linkedRecordType","value":"system"},{"name":"linkedRecordId","value":"alvin"}],"name":"dataDivider"},{"children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}],"name":"createdBy"},{"name":"tsCreated","value":"2014-12-18 22:16:44.623"},{"children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}],"name":"updatedBy"},{"name":"tsUpdated","value":"2016-02-12 10:29:43.147"}],"name":"recordInfo"},{"children":[{"children":[{"name":"value","value":"Lund"}],"name":"namePart","attributes":{"type":"defaultName"}}],"name":"name","attributes":{"type":"authorized"}}],"name":"authority"} |
 
 *!
+!***> Test conversion with missing updated  info for place from XML stored in Fedora to Coras Json format. Updated info is set to same as created info
+
+| Alvin To Cora Format Fixture |
+| type | AlvinXML | getJson? |
+| place | {{{<place id="1">
+        <pid>alvin-place:5</pid>
+        <dsId>METADATA</dsId>
+        <recordInfo id="2">
+                <externalDs>false</externalDs>
+                <lastAction>CREATED</lastAction>
+                <created id="3">
+                        <date id="4">2017-10-27 22:36:51.991 UTC</date>
+                        <user class="authenticatedUser" id="5">
+                                <userId>mimsu695</userId>
+                                <domain>uu</domain>
+                                <firstName>Mimmi</firstName>
+                                <lastName>Sundin</lastName>
+                                <email></email>
+                        </user>
+                        <note>Place created from import</note>
+                        <type>CREATED</type>
+                </created>
+                <updated id="6">
+                        <userAction reference="3" />
+                </updated>
+        </recordInfo>
+        <regions id="7" />
+        <defaultPlaceName id="8">
+                <deleted>false</deleted>
+                <name>Uddetorp</name>
+        </defaultPlaceName>
+        <placeNameForms id="9" />
+        <identifiers id="10" />
+        <localIdentifiers id="11" />
+</place>
+}}} | {"children":[{"children":[{"children":[{"name":"linkedRecordType","value":"recordType"},{"name":"linkedRecordId","value":"place"}],"name":"type"},{"name":"id","value":"alvin-place:5"},{"children":[{"name":"linkedRecordType","value":"system"},{"name":"linkedRecordId","value":"alvin"}],"name":"dataDivider"},{"children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}],"name":"createdBy"},{"name":"tsCreated","value":"2017-10-27 22:36:51.991"},{"children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}],"name":"updatedBy"},{"name":"tsUpdated","value":"2017-10-27 22:36:51.991"}],"name":"recordInfo"},{"children":[{"children":[{"name":"value","value":"Uddetorp"}],"name":"namePart","attributes":{"type":"defaultName"}}],"name":"name","attributes":{"type":"authorized"}}],"name":"authority"} |
+
+*!
