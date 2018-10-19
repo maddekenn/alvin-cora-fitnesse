@@ -377,6 +377,123 @@ Test
 </place>}}} | {"children":[{"children":[{"children":[{"name":"linkedRecordType","value":"recordType"},{"name":"linkedRecordId","value":"place"}],"name":"type"},{"name":"id","value":"alvin-place:22_historic"},{"children":[{"name":"linkedRecordType","value":"system"},{"name":"linkedRecordId","value":"alvin"}],"name":"dataDivider"},{"children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}],"name":"createdBy"},{"name":"tsCreated","value":"2014-12-18 20:20:38.346"},{"repeatId":"0","children":[{"children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}],"name":"updatedBy"},{"name":"tsUpdated","value":"2014-12-18 20:20:38.346"}],"name":"updated"},{"repeatId":"1","children":[{"children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}],"name":"updatedBy"},{"name":"tsUpdated","value":"2014-12-18 20:21:20.880"}],"name":"updated"}],"name":"recordInfo"},{"children":[{"children":[{"name":"value","value":"Linköping"}],"name":"namePart","attributes":{"type":"defaultName"}}],"name":"name","attributes":{"type":"authorized"}},{"children":[{"name":"latitude","value":"58.42"},{"name":"longitude","value":"15.62"}],"name":"coordinates"},{"name":"historicCountry","value":"gaul"},{"repeatId":"0","children":[{"name":"identifierType","value":"waller"},{"name":"identifierValue","value":"1367"}],"name":"identifier"}],"name":"authority","attributes":{"type":"place"}} |
 
 *!
+!***> Test converting historic country with non alphabetic characters in country code
+
+| Alvin To Cora Format Fixture |
+| type | AlvinXML | getJson? |
+| place | {{{ <place id="1">
+  <pid>alvin-place:24</pid>
+  <dsId>METADATA</dsId>
+  <recordInfo id="2">
+    <externalDs>false</externalDs>
+    <lastAction>UPDATED</lastAction>
+    <created id="3">
+      <date id="4">2014-12-18 22:16:44.623 UTC</date>
+      <dateInStorage id="5">2014-12-18 22:16:44.919 UTC</dateInStorage>
+      <user class="seamUser" id="6">
+        <lastUpdated class="sql-timestamp" id="7">2014-04-17 08:12:52.806</lastUpdated>
+        <id>1</id>
+        <userId>test</userId>
+        <domain>uu</domain>
+        <firstName>Test</firstName>
+        <lastName>TEstsson</lastName>
+        <email>test.testsson@ub.uu.se</email>
+      </user>
+      <note>Place created through web gui</note>
+      <type>CREATED</type>
+    </created>
+    <updated id="8">
+      <userAction reference="3"/>
+      <userAction id="9">
+        <date id="10">2014-12-18 22:18:01.276 UTC</date>
+        <dateInStorage id="11">2014-12-18 22:18:01.579 UTC</dateInStorage>
+        <user class="seamUser" id="12">
+          <lastUpdated class="sql-timestamp" id="13">2014-04-17 08:12:52.806</lastUpdated>
+          <id>1</id>
+          <userId>test</userId>
+          <domain>uu</domain>
+          <firstName>Test</firstName>
+          <lastName>Testsson</lastName>
+          <email>test.testsson@ub.uu.se</email>
+        </user>
+        <note>Place updated through web gui</note>
+        <type>UPDATED</type>
+      </userAction>
+      <userAction id="14">
+        <date id="15">2016-02-12 10:29:43.147 UTC</date>
+        <user class="seamUser" id="16">
+          <lastUpdated class="sql-timestamp" id="17">2014-04-17 08:12:53.455</lastUpdated>
+          <id>318</id>
+          <userId>different</userId>
+          <domain>lu</domain>
+          <firstName>Different</firstName>
+          <lastName>Test</lastName>
+          <email>test.testsson@ub.lu.se</email>
+        </user>
+        <note>Place updated through web gui</note>
+        <type>UPDATED</type>
+      </userAction>
+    </updated>
+  </recordInfo>
+  <country class="historicCountry" id="11">
+    <lastUpdated class="sql-timestamp" id="12">2016-03-03 16:44:01.478667</lastUpdated>
+    <defaultName>Herradöme Trčka_von-Lípa</defaultName>
+    <localisedNames id="13">
+      <entry>
+        <string>en</string>
+        <string>Lordship Trčka_von-Lípa</string>
+      </entry>
+    </localisedNames>
+    <code>lordship_trcka_lípa</code>
+  </country>  <regions id="21"/>
+  <defaultPlaceName id="22">
+    <deleted>false</deleted>
+    <name>Lund</name>
+  </defaultPlaceName>
+  <placeNameForms id="23">
+    <entry>
+      <string>alvin-place:24:0</string>
+      <placeNameForm id="24">
+        <id>alvin-place:24:0</id>
+        <deleted>false</deleted>
+        <name>Londini Gothorum</name>
+        <language id="25">
+          <lastUpdated class="sql-timestamp" id="26">2014-04-17 08:12:51.134</lastUpdated>
+          <defaultName>Latin</defaultName>
+          <localisedNames id="27">
+            <entry>
+              <string>en</string>
+              <string>Latin</string>
+            </entry>
+          </localisedNames>
+          <alpha3Code>lat</alpha3Code>
+          <alpha2Code>la</alpha2Code>
+        </language>
+      </placeNameForm>
+    </entry>
+  </placeNameForms>
+  <identifiers id="28"/>
+  <longitude>13.18</longitude>
+  <latitude>55.7</latitude>
+  <localIdentifiers>
+    <localIdentifier>
+      <type class="localIdentifierType">
+        <lastUpdated class="sql-timestamp">2014-04-17 08:49:50.65</lastUpdated>
+        <defaultName>Waller-id</defaultName>
+        <localisedNames/>
+        <code>waller</code>
+        <id>114</id>
+        <internal>false</internal>
+        <organisationUnitId>2</organisationUnitId>
+        <unique>false</unique>
+      </type>
+      <text>873</text>
+    </localIdentifier>
+  </localIdentifiers>
+</place>
+}}} | {"children":[{"children":[{"children":[{"name":"linkedRecordType","value":"recordType"},{"name":"linkedRecordId","value":"place"}],"name":"type"},{"name":"id","value":"alvin-place:24"},{"children":[{"name":"linkedRecordType","value":"system"},{"name":"linkedRecordId","value":"alvin"}],"name":"dataDivider"},{"children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}],"name":"createdBy"},{"name":"tsCreated","value":"2014-12-18 22:16:44.623"},{"repeatId":"0","children":[{"children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}],"name":"updatedBy"},{"name":"tsUpdated","value":"2014-12-18 22:16:44.623"}],"name":"updated"},{"repeatId":"1","children":[{"children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}],"name":"updatedBy"},{"name":"tsUpdated","value":"2014-12-18 22:18:01.276"}],"name":"updated"},{"repeatId":"2","children":[{"children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}],"name":"updatedBy"},{"name":"tsUpdated","value":"2016-02-12 10:29:43.147"}],"name":"updated"}],"name":"recordInfo"},{"children":[{"children":[{"name":"value","value":"Lund"}],"name":"namePart","attributes":{"type":"defaultName"}}],"name":"name","attributes":{"type":"authorized"}},{"children":[{"name":"latitude","value":"55.7"},{"name":"longitude","value":"13.18"}],"name":"coordinates"},{"name":"historicCountry","value":"lordshipTrckaLipa"},{"repeatId":"0","children":[{"name":"language","value":"lat"},{"children":[{"name":"value","value":"Londini Gothorum"}],"name":"namePart","attributes":{"type":"defaultName"}}],"name":"name","attributes":{"type":"alternative"}},{"repeatId":"0","children":[{"name":"identifierType","value":"waller"},{"name":"identifierValue","value":"873"}],"name":"identifier"}],"name":"authority","attributes":{"type":"place"}} |
+*!
+
 !***> Test conversion with missing coordinates for place from XML stored in Fedora to Coras Json format
 
 | Alvin To Cora Format Fixture |
