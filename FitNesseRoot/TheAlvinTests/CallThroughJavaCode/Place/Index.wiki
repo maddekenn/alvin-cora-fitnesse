@@ -1,0 +1,15 @@
+---
+Help: Reading a place from Alvin
+Test
+---
+!contents -R2 -g -p -f -h
+!1 Testing indexing a place
+It should be possible to index a place through the REST API.
+
+!***> Create data of recordType workOrder
+
+!| RecordEndpointFixture |
+| authToken | type | json | testCreateRecord? | getStatusType? | getCreatedId? |
+| $adminAuthToken | workOrder | {"name":"workOrder","children":[{"name":"recordInfo","children":[{"name":"dataDivider","children":[{"name":"linkedRecordType","value":"system"},{"name":"linkedRecordId","value":"alvin"}]}]},{"name":"recordType","children":[{"name":"linkedRecordType","value":"recordType"},{"name":"linkedRecordId","value":"place"}]},{"name":"recordId","value":"alvin-place:15"},{"name":"type","value":"index"}]} | | CREATED | $createdId= |
+
+*!
