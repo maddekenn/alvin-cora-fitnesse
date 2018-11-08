@@ -137,7 +137,7 @@
 				<filtering>true</filtering>
 				<includes>
 					<include>TheAlvinTests/</include>
-					<include>FrontPage.wiki</include>
+					<include>FrontPage/</include>
 					<include>properties</include>
 				</includes>
 				<excludes>
