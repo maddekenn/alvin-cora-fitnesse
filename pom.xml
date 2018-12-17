@@ -43,7 +43,7 @@
 		<connection>scm:git:https://github.com/lsu-ub-uu/alvin-cora-fitnesse.git</connection>
 		<developerConnection>scm:git:https://github.com/lsu-ub-uu/alvin-cora-fitnesse.git</developerConnection>
 		<url>https://github.com/lsu-ub-uu/alvin-cora-fitnesse.git</url>
-	  <tag>HEAD</tag>
+	  <tag>release/0.4</tag>
   </scm>
 
 	<dependencies>
