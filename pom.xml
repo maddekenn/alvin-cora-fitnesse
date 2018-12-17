@@ -34,7 +34,7 @@
 		<json.version>0.5.7</json.version>
 		<httphandler.version>0.5.1</httphandler.version>
 		<fitnesseintegration.version>0.3.0</fitnesseintegration.version>
-		<alvintocorastorage.version>0.3.0</alvintocorastorage.version>
+		<alvintocorastorage.version>0.4.0</alvintocorastorage.version>
 		<javax.ws.rs.version>2.1.1</javax.ws.rs.version>
 		<fitnesse.version>20180127</fitnesse.version>
 	</properties>
