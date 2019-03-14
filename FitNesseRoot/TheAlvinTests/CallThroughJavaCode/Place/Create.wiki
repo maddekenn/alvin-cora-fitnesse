@@ -1,0 +1,23 @@
+---
+Help: Updating a place to Alvin
+Test
+---
+!contents -R2 -g -p -f -h
+!1 Testing creating a new place
+It should be possible to create a new place using the REST API.
+
+!2 Test with new place
+!***> Create data of recordType place
+
+!| RecordEndpointFixture |
+| authToken | type | json | testCreateRecordCreatedType? | getStatusType? | getCreatedId? |
+| $adminAuthToken | place | {"name":"authority","children":[{"name":"recordInfo","children":[{"name":"dataDivider","children":[{"name":"linkedRecordType","value":"system"},{"name":"linkedRecordId","value":"alvin"}]}]},{"name":"name","children":[{"name":"namePart","children":[{"name":"value","value":"Fitnesse place"}],"attributes":{"type":"defaultName"}}],"attributes":{"type":"authorized"}}],"attributes":{"type":"place"}} | place | CREATED | $createdId= |
+
+*!
+!***> Read newly created place as Json
+
+!| RecordEndpointFixture |
+| authToken | type | id | testReadRecord? | getStatusType? |
+| $adminAuthToken | place | $createdId | =~/"value":"Fitnesse place"/ | OK |
+
+*!
