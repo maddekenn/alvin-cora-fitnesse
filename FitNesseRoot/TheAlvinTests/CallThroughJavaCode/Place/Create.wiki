@@ -21,3 +21,17 @@ It should be possible to create a new place using the REST API.
 | $adminAuthToken | place | $createdId | =~/"value":"Fitnesse place"/ | OK |
 
 *!
+!***> Create data of recordType place with coordinates
+
+!| RecordEndpointFixture |
+| authToken | type | json | testCreateRecordCreatedType? | getStatusType? | getCreatedId? |
+| $adminAuthToken | place | {"name":"authority","children":[{"name":"recordInfo","children":[{"name":"dataDivider","children":[{"name":"linkedRecordType","value":"system"},{"name":"linkedRecordId","value":"alvin"}]}]},{"name":"name","children":[{"name":"namePart","children":[{"name":"value","value":"Fitnesse place wih coordinates"}],"attributes":{"type":"defaultName"}}],"attributes":{"type":"authorized"}},{"name":"coordinates","children":[{"name":"latitude","value":"59.24341475839977"},{"name":"longitude","value":"17.16223153620625"}]}],"attributes":{"type":"place"}} | place | CREATED | $createdId= |
+
+*!
+!***> Read newly created place with coordinates as Json
+
+!| RecordEndpointFixture |
+| authToken | type | id | testReadRecord? | getStatusType? |
+| $adminAuthToken | place | $createdId | =~/"name":"coordinates"/ | OK |
+
+*!
