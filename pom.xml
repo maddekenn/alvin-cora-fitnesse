@@ -33,7 +33,7 @@
 	<properties>
 		<json.version>0.5.7</json.version>
 		<fitnesseintegration.version>0.3.0</fitnesseintegration.version>
-		<alvinmixedstorage.version>0.9-SNAPSHOT</alvinmixedstorage.version>
+		<alvinmixedstorage.version>1.0.0</alvinmixedstorage.version>
 		<javax.ws.rs.version>2.1.1</javax.ws.rs.version>
 		<fitnesse.version>20180127</fitnesse.version>
 	</properties>
