@@ -20,8 +20,8 @@ package se.uu.ub.alvin.cora.fitnesse;
 
 import org.apache.commons.text.StringEscapeUtils;
 
-import se.uu.ub.cora.alvin.tocorastorage.fedora.AlvinFedoraToCoraConverter;
-import se.uu.ub.cora.alvin.tocorastorage.fedora.AlvinFedoraToCoraConverterFactory;
+import se.uu.ub.cora.alvin.mixedstorage.fedora.AlvinFedoraConverterFactory;
+import se.uu.ub.cora.alvin.mixedstorage.fedora.AlvinFedoraToCoraConverter;
 import se.uu.ub.cora.bookkeeper.data.DataGroup;
 import se.uu.ub.cora.bookkeeper.data.converter.DataToJsonConverter;
 import se.uu.ub.cora.bookkeeper.data.converter.DataToJsonConverterFactoryImp;
@@ -65,9 +65,9 @@ public class AlvinToCoraFormatFixture {
 	}
 
 	private AlvinFedoraToCoraConverter createConverterForCurrentType() {
-		AlvinFedoraToCoraConverterFactory converterFactory = AlvinFitnesseDependencyProvider
+		AlvinFedoraConverterFactory converterFactory = AlvinFitnesseDependencyProvider
 				.getConverterFactory();
-		return converterFactory.factor(type);
+		return converterFactory.factorToCoraConverter(type);
 	}
 
 	private String convertDataGroupToJson(DataGroup fromXML) {

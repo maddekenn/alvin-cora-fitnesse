@@ -1,0 +1,36 @@
+---
+Help: Reading a place from Alvin
+Test
+---
+!contents -R2 -g -p -f -h
+!1 Testing deleting a place
+It should be possible to delete places through the REST API.
+
+!***> Delete place alvin-place:XX
+
+
+
+!| comment |
+| RecordEndpointFixture |
+| authToken | type | id | testDeleteRecord? | getStatusType? |
+| $adminAuthToken | place | alvin-place:22 | | OK |
+
+*!
+!***> List places - places with state DELETED is excluded
+
+There are 6 places stored in Fedora, but one has state DELETED, and is therefore excluded
+
+!| RecordEndpointFixture |
+| authToken | type | testReadRecordList? | getStatusType? |
+| $adminAuthToken | place | =~/"containDataOfType":"place","toNo":"5"/ | OK |
+
+*!
+!***> When a place has state DELETED, it is not found on read
+
+alvin-place:24 is a place with state DELETED
+
+!| RecordEndpointFixture |
+| authToken | type | id | testReadRecord? | getStatusType? |
+| $adminAuthToken | place | alvin-place:24 | Record not found for type: place and id: alvin-place:24 | NOT_FOUND |
+
+*!

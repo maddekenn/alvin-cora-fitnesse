@@ -4,7 +4,7 @@ Test
 ---
 !contents -R2 -g -p -f -h
 !1 Testing reading a place
-It should be possible to read a place from the REST API.
+It should be possible to list places and to read a place from the REST API.
 
 !***> Read place alvin-place:22, alvin-place:15 as Json
 
@@ -16,5 +16,12 @@ alvin-place:15 also has two alternative names
 | authToken | type | id | testReadRecord? | getStatusType? |
 | $adminAuthToken | place | alvin-place:22 | | OK |
 | $adminAuthToken | place | alvin-place:15 | | OK |
+
+*!
+!***> List places
+
+!| RecordEndpointFixture |
+| authToken | type | testReadRecordList? | getStatusType? |
+| $adminAuthToken | place | =~/"containDataOfType":"place","toNo":"5"/ | OK |
 
 *!

@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Uppsala University Library
+ * Copyright 2018, 2019 Uppsala University Library
  *
  * This file is part of Cora.
  *
@@ -18,12 +18,12 @@
  */
 package se.uu.ub.alvin.cora.fitnesse;
 
-import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
 
-import se.uu.ub.cora.alvin.tocorastorage.fedora.AlvinFedoraToCoraConverterFactory;
+import se.uu.ub.cora.alvin.mixedstorage.fedora.AlvinFedoraConverterFactory;
 
 public class AlvinFitnesseDependencyProvider {
-	private static AlvinFedoraToCoraConverterFactory converterFactory;
+	private static AlvinFedoraConverterFactory converterFactory;
 
 	public AlvinFitnesseDependencyProvider() {
 		// needs a public constructor for fitnesse to work
@@ -31,16 +31,19 @@ public class AlvinFitnesseDependencyProvider {
 	}
 
 	public static synchronized void setConverterFactoryClassName(String converterFactoryClassName) {
-		Constructor<?> constructor;
 		try {
-			constructor = Class.forName(converterFactoryClassName).getConstructor();
-			converterFactory = (AlvinFedoraToCoraConverterFactory) constructor.newInstance();
+			Class<?>[] cArg = new Class[1];
+			cArg[0] = String.class;
+			Method constructor = Class.forName(converterFactoryClassName)
+					.getMethod("usingFedoraURL", cArg);
+			converterFactory = (AlvinFedoraConverterFactory) constructor.invoke(null,
+					"someFakeUrlSinceItsNotUsedHereButCodeRefactoringIsNeededElsewhere");
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
 	}
 
-	public static AlvinFedoraToCoraConverterFactory getConverterFactory() {
+	public static AlvinFedoraConverterFactory getConverterFactory() {
 		return converterFactory;
 	}
 }
