@@ -1,4 +1,4 @@
-package se.uu.ub.alvin.cora.fitnesse;
+package se.uu.ub.cora.alvin.fitnesse;
 
 import se.uu.ub.cora.alvin.mixedstorage.fedora.AlvinCoraToFedoraConverter;
 import se.uu.ub.cora.alvin.mixedstorage.fedora.AlvinFedoraConverterFactory;

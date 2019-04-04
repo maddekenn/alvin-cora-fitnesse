@@ -22,17 +22,17 @@
 	<parent>
 		<groupId>se.uu.ub.cora</groupId>
 		<artifactId>cora-parent</artifactId>
-		<version>0.8.6</version>
+		<version>0.9.0</version>
 	</parent>
 
 	<artifactId>alvincorafitnesse</artifactId>
 	<packaging>jar</packaging>
-	<version>0.5-SNAPSHOT</version>
+	<version>1.0-SNAPSHOT</version>
 	<name>Alvin Cora Fitnesse</name>
 
 	<properties>
-		<json.version>0.5.7</json.version>
-		<fitnesseintegration.version>0.3.0</fitnesseintegration.version>
+		<json.version>1.0.0</json.version>
+		<fitnesseintegration.version>1.0.0</fitnesseintegration.version>
 		<alvinmixedstorage.version>1.0.0</alvinmixedstorage.version>
 		<javax.ws.rs.version>2.1.1</javax.ws.rs.version>
 		<fitnesse.version>20180127</fitnesse.version>

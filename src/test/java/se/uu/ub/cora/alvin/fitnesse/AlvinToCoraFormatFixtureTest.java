@@ -16,12 +16,15 @@
  *     You should have received a copy of the GNU General Public License
  *     along with Cora.  If not, see <http://www.gnu.org/licenses/>.
  */
-package se.uu.ub.alvin.cora.fitnesse;
+package se.uu.ub.cora.alvin.fitnesse;
 
 import static org.testng.Assert.assertEquals;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import se.uu.ub.cora.alvin.fitnesse.AlvinFitnesseDependencyProvider;
+import se.uu.ub.cora.alvin.fitnesse.AlvinToCoraFormatFixture;
 
 public class AlvinToCoraFormatFixtureTest {
 	private AlvinToCoraFormatFixture fixture;
@@ -30,7 +33,7 @@ public class AlvinToCoraFormatFixtureTest {
 	@BeforeMethod
 	public void beforeMethod() {
 		AlvinFitnesseDependencyProvider.setConverterFactoryClassName(
-				"se.uu.ub.alvin.cora.fitnesse.AlvinToCoraConverterFactorySpy");
+				"se.uu.ub.cora.alvin.fitnesse.AlvinToCoraConverterFactorySpy");
 		converterFactorySpy = (AlvinToCoraConverterFactorySpy) AlvinFitnesseDependencyProvider
 				.getConverterFactory();
 		fixture = new AlvinToCoraFormatFixture();
@@ -39,7 +42,7 @@ public class AlvinToCoraFormatFixtureTest {
 	@Test
 	public void testNoConverterErrorClassname() throws Exception {
 		AlvinFitnesseDependencyProvider.setConverterFactoryClassName(
-				"se.uu.ub.alvin.cora.fitnesse.AlvinToCoraConverterThrowsExceptionFactorySpy");
+				"se.uu.ub.cora.alvin.fitnesse.AlvinToCoraConverterThrowsExceptionFactorySpy");
 		assertEquals(fixture.getJson(), "can not convert xml:java.lang.RuntimeException");
 	}
 
