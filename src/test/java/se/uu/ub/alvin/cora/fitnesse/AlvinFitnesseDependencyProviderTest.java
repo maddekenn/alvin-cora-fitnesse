@@ -1,5 +1,5 @@
 /*
- * Copyright 2018 Uppsala University Library
+ * Copyright 2018, 2019 Uppsala University Library
  *
  * This file is part of Cora.
  *
@@ -18,12 +18,12 @@
  */
 package se.uu.ub.alvin.cora.fitnesse;
 
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
 import org.testng.annotations.Test;
 
-import se.uu.ub.cora.alvin.tocorastorage.fedora.AlvinFedoraToCoraConverterFactory;
-import se.uu.ub.cora.alvin.tocorastorage.fedora.AlvinFedoraToCoraConverterFactoryImp;
+import se.uu.ub.cora.alvin.mixedstorage.fedora.AlvinFedoraToCoraConverterFactoryImp;
 
 public class AlvinFitnesseDependencyProviderTest {
 	@Test
@@ -35,7 +35,7 @@ public class AlvinFitnesseDependencyProviderTest {
 	@Test(expectedExceptions = RuntimeException.class)
 	public void testFactorConverterNonExistingClassName() {
 		AlvinFitnesseDependencyProvider.setConverterFactoryClassName(
-				"se.uu.ub.cora.alvin.tocorastorage.DoesNotExistFactoryImp");
+				"se.uu.ub.cora.alvin.mixedstorage.DoesNotExistFactoryImp");
 	}
 
 	@Test(expectedExceptions = RuntimeException.class)
@@ -46,10 +46,13 @@ public class AlvinFitnesseDependencyProviderTest {
 	@Test
 	public void testFactorHttpHandler() {
 		AlvinFitnesseDependencyProvider.setConverterFactoryClassName(
-				"se.uu.ub.cora.alvin.tocorastorage.fedora.AlvinFedoraToCoraConverterFactoryImp");
-		AlvinFedoraToCoraConverterFactory converterFactory = AlvinFitnesseDependencyProvider
+				"se.uu.ub.cora.alvin.mixedstorage.fedora.AlvinFedoraToCoraConverterFactoryImp");
+		AlvinFedoraToCoraConverterFactoryImp converterFactory = (AlvinFedoraToCoraConverterFactoryImp) AlvinFitnesseDependencyProvider
 				.getConverterFactory();
 		assertTrue(converterFactory instanceof AlvinFedoraToCoraConverterFactoryImp);
+
+		assertEquals(converterFactory.getFedoraURL(),
+				"someFakeUrlSinceItsNotUsedHereButCodeRefactoringIsNeededElsewhere");
 	}
 
 }
