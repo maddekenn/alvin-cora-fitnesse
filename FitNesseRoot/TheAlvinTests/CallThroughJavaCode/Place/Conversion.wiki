@@ -7,7 +7,7 @@ Test
 
 | Alvin To Cora Format Fixture |
 | type | AlvinXML | getJson? |
-| place | tramsXML | can not convert xml:se.uu.ub.cora.alvin.tocorastorage.ParseException: Error converting place to Cora place: Can not read xml: Content is not allowed in prolog. |
+| place | tramsXML | can not convert xml:se.uu.ub.cora.alvin.mixedstorage.ParseException: Error converting place to Cora place: Can not read xml: Content is not allowed in prolog. |
 | place | {{{<place id="1">
   <pid>alvin-place:22</pid>
   <dsId>METADATA</dsId>
