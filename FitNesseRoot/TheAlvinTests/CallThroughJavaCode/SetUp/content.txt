@@ -8,6 +8,7 @@
 
 !| script | DependencyProvider |
 | setHttpHandlerFactoryClassName | se.uu.ub.cora.httphandler.HttpHandlerFactoryImp |
+| setJsonToDataFactoryClassName | se.uu.ub.cora.clientdata.converter.jsontojava.JsonToDataConverterFactoryImp |
 
 !| script | AlvinFitnesseDependencyProvider |
 | setConverterFactoryClassName | se.uu.ub.cora.alvin.mixedstorage.fedora.AlvinFedoraToCoraConverterFactoryImp |
