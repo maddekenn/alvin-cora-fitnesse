@@ -22,7 +22,7 @@ There are 6 places stored in Fedora, but one has state DELETED, and is therefore
 
 !| RecordEndpointFixture |
 | authToken | type | testReadRecordList? | getStatusType? |
-| $adminAuthToken | place | =~/"containDataOfType":"place","toNo":"5"/ | OK |
+| $adminAuthToken | place |  | OK |
 
 *!
 !***> When a place has state DELETED, it is not found on read

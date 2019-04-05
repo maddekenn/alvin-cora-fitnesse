@@ -22,6 +22,6 @@ alvin-place:15 also has two alternative names
 
 !| RecordEndpointFixture |
 | authToken | type | testReadRecordList? | getStatusType? |
-| $adminAuthToken | place | =~/"containDataOfType":"place","toNo":"5"/ | OK |
+| $adminAuthToken | place |  | OK |
 
 *!

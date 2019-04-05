@@ -115,7 +115,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>fitnesse</finalName>
+		<finalName>alvincorafitnesse</finalName>
 		<resources>
 			<resource>
 				<targetPath>FitNesseRoot</targetPath>
