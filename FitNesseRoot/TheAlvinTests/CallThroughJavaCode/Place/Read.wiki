@@ -21,7 +21,8 @@ alvin-place:15 also has two alternative names
 *!
 !***> List places
 
-!| RecordEndpointFixture |
+!| comment |
+| RecordEndpointFixture |
 | authToken | type | testReadRecordList? | getStatusType? |
 | $adminAuthToken | place | | OK |
 

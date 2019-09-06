@@ -13,7 +13,8 @@ alvin-place:22 is a minimal place
 
 alvin-place:15 also has two alternative names
 
-!| RecordEndpointFixture |
+!| comment |
+| RecordEndpointFixture |
 | authToken | type | id | testReadRecord? | getStatusType? |
 | $adminAuthToken | place | alvin-place:22 | =~/"value":"Linköping"/ | OK |
 
@@ -28,7 +29,8 @@ alvin-place:15 also has two alternative names
 *!
 !***> Read alvin-record:22 again to see that it is updated
 
-!| RecordEndpointFixture |
+!| comment |
+| RecordEndpointFixture |
 | authToken | type | id | testReadRecord? | getStatusType? |
 | $adminAuthToken | place | alvin-place:22 | =~/"value":"Linköping updated from Cora"/ | OK |
 
