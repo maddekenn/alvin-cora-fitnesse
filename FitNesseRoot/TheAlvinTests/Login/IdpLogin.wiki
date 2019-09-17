@@ -24,9 +24,9 @@ IdpLogin is in test and production secured by apache and common login systems an
 
 !| IdpLoginServletFixture |
 | EPPN | getAuthTokenForEPPN? | getIdFromLogin? | getResponseCode? | getAuthToken? | getValidForNoSeconds? | getDeleteUrl? |
-| fitnesseAdminDb@user.uu.se | | fitnesseAdminDb@user.uu.se | OK | $adminAuthToken= | | http:\/\/localhost:8181\/apptokenverifier\/rest\/56 |
-| fitnesseUserDb@user.uu.se | | fitnesseUserDb@user.uu.se | OK | $userAuthToken= | | http:\/\/localhost:8181\/apptokenverifier\/rest\/57 |
-| userNotInDb@user.uu.se | | | OK | | | http:\/\/localhost:8181\/apptokenverifier\/rest\/coraUser:5368244264733286 |
+| fitnesseAdminDb@user.uu.se | | fitnesseAdminDb@user.uu.se | OK | $adminAuthToken= | | ${tokenLogoutURL}/rest/56 |
+| fitnesseUserDb@user.uu.se | | fitnesseUserDb@user.uu.se | OK | $userAuthToken= | | ${tokenLogoutURL}/rest/57 |
+| userNotInDb@user.uu.se | | | OK | | | ${tokenLogoutURL}/rest/coraUser:5368244264733286 |
 
 *!
 !2 Test with new texts to show that we can use our authToken and be our user
