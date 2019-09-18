@@ -29,12 +29,19 @@ IdpLogin is in test and production secured by apache and common login systems an
 | userNotInDb@user.uu.se | | | OK | | | ${tokenLogoutURL}coraUser:5368244264733286 |
 
 *!
-!2 Test with new texts to show that we can use our authToken and be our user
-!***> Create data of recordType text (textSystemOne)
+!2 Test to update place to show that we can use our authToken and be our user (with place admin rights)
+!***> Update alvin-place:22 with new name
 
 !| RecordEndpointFixture |
-| authToken | type | json | testCreateRecord? | getStatusType? |
-| $userAuthToken | textSystemOne | {"name":"text","children":[{"name":"recordInfo","children":[{"name":"id","value":"myAuthText"},{"children":[{"name":"linkedRecordType","value":"system"},{"name":"linkedRecordId","value":"cora"}],"name":"dataDivider"}]},{"name":"textPart","attributes":{"type":"default","lang":"sv"} ,"children":[{"name":"text","value":"Min svenska text"}]}]} | =~/"name":"linkedRecordId",\s*"value":"57"/ | CREATED |
+| authToken | type | id | json | testUpdateRecord? | getStatusType? |
+| $userAuthToken | place | alvin-place:22 | {"name":"authority","children":[{"name":"recordInfo","children":[{"name":"id","value":"alvin-place:22"},{"name":"type","children":[{"name":"linkedRecordType","value":"recordType"},{"name":"linkedRecordId","value":"place"}]},{"name":"createdBy","children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}]},{"name":"dataDivider","children":[{"name":"linkedRecordType","value":"system"},{"name":"linkedRecordId","value":"alvin"}]},{"name":"tsCreated","value":"2014-12-18 20:20:38.346"},{"name":"updated","children":[{"name":"updatedBy","children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}]},{"name":"tsUpdated","value":"2014-12-18 20:20:38.346"}],"repeatId":"0"},{"name":"updated","children":[{"name":"updatedBy","children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}]},{"name":"tsUpdated","value":"2014-12-18 20:21:20.880"}],"repeatId":"1"},{"name":"updated","children":[{"name":"updatedBy","children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"141414"}]},{"name":"tsUpdated","value":"2019-02-14 11:57:55.129"}],"repeatId":"2"}]},{"name":"name","children":[{"name":"namePart","children":[{"name":"value","value":"Linköping updated from Cora"}],"attributes":{"type":"defaultName"}}],"attributes":{"type":"authorized"}},{"name":"coordinates","children":[{"name":"latitude","value":"58.42"},{"name":"longitude","value":"15.62"}]},{"name":"identifier","children":[{"name":"identifierType","value":"waller"},{"name":"identifierValue","value":"1367"}],"repeatId":"0"},{"name":"country","value":"SE"}],"attributes":{"type":"place"}} | | OK |
+
+*!
+!***> Read alvin-record:22 again to see that it is updated
+
+!| RecordEndpointFixture |
+| authToken | type | id | testReadRecord? | getStatusType? |
+| $userAuthToken | place | alvin-place:22 | =~/"value":"Linköping updated from Cora"/ | OK |
 
 *!
 !***> Logout
@@ -44,19 +51,19 @@ IdpLogin is in test and production secured by apache and common login systems an
 | 57 | $userAuthToken | | OK |
 
 *!
-!2 Test with new texts to show that authToken is not valid after logout
-!***> Create data of recordType text (textSystemOne)
+!2 Test to update place to show that authToken is not valid after logout
+!***> Update alvin-place:22 with new name
 
 !| RecordEndpointFixture |
-| authToken | type | json | testCreateRecord? | getStatusType? |
-| $userAuthToken | textSystemOne | {"name":"text","children":[{"name":"recordInfo","children":[{"name":"id","value":"myAuthText"},{"children":[{"name":"linkedRecordType","value":"system"},{"name":"linkedRecordId","value":"cora"}],"name":"dataDivider"}]},{"name":"textPart","attributes":{"type":"default","lang":"sv"} ,"children":[{"name":"text","value":"Min svenska text"}]}]} | | UNAUTHORIZED |
+| authToken | type | id | json | testUpdateRecord? | getStatusType? |
+| $userAuthToken | place | alvin-place:22 | {"name":"authority","children":[{"name":"recordInfo","children":[{"name":"id","value":"alvin-place:22"},{"name":"type","children":[{"name":"linkedRecordType","value":"recordType"},{"name":"linkedRecordId","value":"place"}]},{"name":"createdBy","children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}]},{"name":"dataDivider","children":[{"name":"linkedRecordType","value":"system"},{"name":"linkedRecordId","value":"alvin"}]},{"name":"tsCreated","value":"2014-12-18 20:20:38.346"},{"name":"updated","children":[{"name":"updatedBy","children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}]},{"name":"tsUpdated","value":"2014-12-18 20:20:38.346"}],"repeatId":"0"},{"name":"updated","children":[{"name":"updatedBy","children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}]},{"name":"tsUpdated","value":"2014-12-18 20:21:20.880"}],"repeatId":"1"},{"name":"updated","children":[{"name":"updatedBy","children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"141414"}]},{"name":"tsUpdated","value":"2019-02-14 11:57:55.129"}],"repeatId":"2"}]},{"name":"name","children":[{"name":"namePart","children":[{"name":"value","value":"Linköping updated from Cora"}],"attributes":{"type":"defaultName"}}],"attributes":{"type":"authorized"}},{"name":"coordinates","children":[{"name":"latitude","value":"58.42"},{"name":"longitude","value":"15.62"}]},{"name":"identifier","children":[{"name":"identifierType","value":"waller"},{"name":"identifierValue","value":"1367"}],"repeatId":"0"},{"name":"country","value":"SE"}],"attributes":{"type":"place"}} | | UNAUTHORIZED |
 
 *!
-!2 Clean up created data
-!***> Clean up created data
+!2 Clean up changed data
+!***> Restore original alvin-place:22 with new name
 
 !| RecordEndpointFixture |
-| authToken | type | id | testDeleteRecord? | getStatusType? |
-| $adminAuthToken | textSystemOne | myAuthText | | OK |
+| authToken | type | id | json | testUpdateRecord? | getStatusType? |
+| $adminAuthToken | place | alvin-place:22 | {"name":"authority","children":[{"name":"recordInfo","children":[{"name":"id","value":"alvin-place:22"},{"name":"type","children":[{"name":"linkedRecordType","value":"recordType"},{"name":"linkedRecordId","value":"place"}]},{"name":"createdBy","children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}]},{"name":"dataDivider","children":[{"name":"linkedRecordType","value":"system"},{"name":"linkedRecordId","value":"alvin"}]},{"name":"tsCreated","value":"2014-12-18 20:20:38.346"},{"name":"updated","children":[{"name":"updatedBy","children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}]},{"name":"tsUpdated","value":"2014-12-18 20:20:38.346"}],"repeatId":"0"},{"name":"updated","children":[{"name":"updatedBy","children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}]},{"name":"tsUpdated","value":"2014-12-18 20:21:20.880"}],"repeatId":"1"},{"name":"updated","children":[{"name":"updatedBy","children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"141414"}]},{"name":"tsUpdated","value":"2019-02-14 11:57:55.129"}],"repeatId":"2"}]},{"name":"name","children":[{"name":"namePart","children":[{"name":"value","value":"Linköping"}],"attributes":{"type":"defaultName"}}],"attributes":{"type":"authorized"}},{"name":"coordinates","children":[{"name":"latitude","value":"58.42"},{"name":"longitude","value":"15.62"}]},{"name":"identifier","children":[{"name":"identifierType","value":"waller"},{"name":"identifierValue","value":"1367"}],"repeatId":"0"},{"name":"country","value":"SE"}],"attributes":{"type":"place"}} | | OK |
 
 *!
