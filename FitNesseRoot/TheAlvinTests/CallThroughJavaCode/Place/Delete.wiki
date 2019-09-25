@@ -6,31 +6,51 @@ Test
 !1 Testing deleting a place
 It should be possible to delete places through the REST API.
 
-!***> Delete place alvin-place:XX
+!***> Create a new place
 
+First we create a place, to later be able to delete it
 
+!| RecordEndpointFixture |
+| authToken | type | json | testCreateRecordCreatedType? | getStatusType? | getCreatedId? |
+| $adminAuthToken | place | {"name":"authority","children":[{"name":"recordInfo","children":[{"name":"dataDivider","children":[{"name":"linkedRecordType","value":"system"},{"name":"linkedRecordId","value":"alvin"}]}]},{"name":"name","children":[{"name":"namePart","children":[{"name":"value","value":"Fitnesse place to be deleted"}],"attributes":{"type":"defaultName"}}],"attributes":{"type":"authorized"}}],"attributes":{"type":"place"}} | place | CREATED | $createdId= |
 
-!| comment |
-| RecordEndpointFixture |
+*!
+!***> Read newly created place as Json
+
+!| RecordEndpointFixture |
+| authToken | type | id | testReadRecord? | getStatusType? |
+| $adminAuthToken | place | $createdId | =~/"value":"Fitnesse place to be deleted"/ | OK |
+
+*!
+!***> List places
+
+There are 6 places with the newly created place
+
+!| RecordEndpointFixture |
+| authToken | type | testReadRecordList? | getStatusType? |
+| $adminAuthToken | place | | OK |
+
+*!
+!***> Delete newly created place
+
+!| RecordEndpointFixture |
 | authToken | type | id | testDeleteRecord? | getStatusType? |
-| $adminAuthToken | place | alvin-place:22 | | OK |
+| $adminAuthToken | place | $createdId | | OK |
+
+*!
+!***> Try to read deleted place
+
+!| RecordEndpointFixture |
+| authToken | type | id | testReadRecord? | getStatusType? |
+| $adminAuthToken | place | $createdId | | NOT_FOUND |
 
 *!
 !***> List places - places with state DELETED is excluded
 
-There are 6 places stored in Fedora, but one has state DELETED, and is therefore excluded
+
 
 !| RecordEndpointFixture |
 | authToken | type | testReadRecordList? | getStatusType? |
-| $adminAuthToken | place |  | OK |
-
-*!
-!***> When a place has state DELETED, it is not found on read
-
-alvin-place:24 is a place with state DELETED
-
-!| RecordEndpointFixture |
-| authToken | type | id | testReadRecord? | getStatusType? |
-| $adminAuthToken | place | alvin-place:24 | Record not found for type: place and id: alvin-place:24 | NOT_FOUND |
+| $adminAuthToken | place | | OK |
 
 *!
