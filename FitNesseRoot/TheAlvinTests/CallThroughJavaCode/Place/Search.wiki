@@ -1,0 +1,52 @@
+---
+Test
+---
+Perform a search for places
+
+!***> Test searching for any place
+
+!| RecordEndpointFixture |
+| authToken | searchId | json | testSearchRecord? | getStatusType? |
+| $adminAuthToken | placeSearch | {"name":"placeSearch","children":[{"name":"include","children":[{"name":"includePart","children":[{"name":"placeSearchTerm","value":"**"}]}]}]} | | OK |
+
+*!
+!***> Test searching for special FitNesseSpecialPlace should not be found as it does not exist NOT ACTIVE
+
+!| comment |
+| RecordEndpointFixture |
+| authToken | searchId | json | testSearchRecord? | getStatusType? |
+| $adminAuthToken | placeSearch | {"name":"placeSearch","children":[{"name":"include","children":[{"name":"includePart","children":[{"name":"placeSearchTerm","value":"FitNesseSpecialPlace"}]}]}]} | =~/"data":\[\],"totalNo":"0"/ | OK |
+
+*!
+!***> Create data of recordType place [[FitNesseSpecialPlace NOT ACTIVE][FitNesseSpecialPlace]]
+
+!| comment |
+| RecordEndpointFixture |
+| authToken | type | json | testCreateRecordCreatedType? | getStatusType? | getCreatedId? |
+| $adminAuthToken | place | {"name":"authority","children":[{"name":"recordInfo","children":[{"name":"dataDivider","children":[{"name":"linkedRecordType","value":"system"},{"name":"linkedRecordId","value":"alvin"}]}]},{"name":"name","children":[{"name":"namePart","children":[{"name":"value","value":"FitNesseSpecialPlace"}],"attributes":{"type":"defaultName"}}],"attributes":{"type":"authorized"}}],"attributes":{"type":"place"}} | place | CREATED | $createdId= |
+
+*!
+!***> Test searching for special FitNesseSpecialPlace should be found as it now should exist NOT ACTIVE
+
+!| comment |
+| RecordEndpointFixture |
+| authToken | searchId | json | testSearchRecord? | getStatusType? |
+| $adminAuthToken | placeSearch | {"name":"placeSearch","children":[{"name":"include","children":[{"name":"includePart","children":[{"name":"placeSearchTerm","value":"FitNesseSpecialPlace"}]}]}]} | =~/"data":\[\],"totalNo":"1"/ | OK |
+
+*!
+!***> Delete created place NOT ACTIVE
+
+!| comment |
+| RecordEndpointFixture |
+| authToken | type | id | testDeleteRecord? | getStatusType? |
+| $adminAuthToken | place | $createdId | | OK |
+
+*!
+!***> Test searching for special FitNesseSpecialPlace should no longer be found as it has been deleted NOT ACTIVE
+
+!| comment |
+| RecordEndpointFixture |
+| authToken | searchId | json | testSearchRecord? | getStatusType? |
+| $adminAuthToken | placeSearch | {"name":"placeSearch","children":[{"name":"include","children":[{"name":"includePart","children":[{"name":"placeSearchTerm","value":"FitNesseSpecialPlace"}]}]}]} | =~/"data":\[\],"totalNo":"0"/ | OK |
+
+*!

@@ -12,6 +12,7 @@ It should be possible to create a new place using the REST API.
 !| RecordEndpointFixture |
 | authToken | type | json | testCreateRecordCreatedType? | getStatusType? | getCreatedId? |
 | $adminAuthToken | place | {"name":"authority","children":[{"name":"recordInfo","children":[{"name":"dataDivider","children":[{"name":"linkedRecordType","value":"system"},{"name":"linkedRecordId","value":"alvin"}]}]},{"name":"name","children":[{"name":"namePart","children":[{"name":"value","value":"Fitnesse place"}],"attributes":{"type":"defaultName"}}],"attributes":{"type":"authorized"}}],"attributes":{"type":"place"}} | place | CREATED | $createdId= |
+| $adminAuthToken | place | {"name":"authority","children":[{"name":"recordInfo","children":[{"name":"dataDivider","children":[{"name":"linkedRecordType","value":"system"},{"name":"linkedRecordId","value":"alvin"}]}]},{"name":"name","children":[{"name":"namePart","children":[{"name":"value","value":"En testplats för fitnesse"}],"attributes":{"type":"defaultName"}}],"attributes":{"type":"authorized"}},{"name":"coordinates","children":[{"name":"latitude","value":"57.26478712789165"},{"name":"longitude","value":"18.442056566675937"}]}],"attributes":{"type":"place"}} | place | CREATED | $createdId2= |
 
 *!
 !***> Read newly created place as Json
@@ -19,5 +20,13 @@ It should be possible to create a new place using the REST API.
 !| RecordEndpointFixture |
 | authToken | type | id | testReadRecord? | getStatusType? |
 | $adminAuthToken | place | $createdId | =~/"value":"Fitnesse place"/ | OK |
+
+*!
+!***> Read newly created place as Json missing data should be fixed NOT ACTIVE
+
+!| comment |
+| RecordEndpointFixture |
+| authToken | type | id | testReadRecord? | getStatusType? |
+| $adminAuthToken | place | $createdId2 | =~/"value":"57.26478712789165"/ | OK |
 
 *!

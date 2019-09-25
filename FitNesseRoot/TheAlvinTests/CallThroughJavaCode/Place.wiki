@@ -2,5 +2,6 @@
 Help: Tests for place
 Suite
 ---
-!contents -R2 -g -p -f -h
 Place is a recordType in Alvin that can store information about places, such as cities, villages, etc.
+
+!contents -R2 -g -p -f -h
