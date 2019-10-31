@@ -16,7 +16,6 @@ alvin-place:1720 is a fully described place with a name, alternative name, count
 !| RecordEndpointFixture |
 | authToken | type | id | testReadRecord? | getStatusType? |
 | $adminAuthToken | place | alvin-place:22 | =~/"value":"Linköping"/ | OK |
-| $adminAuthToken | place | alvin-place:1720 | =~/"value":"Ockelbo"/ | OK |
 
 *!
 !***> Update alvin-place:22 with a new authorized name
