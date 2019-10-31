@@ -33,21 +33,21 @@ There are 6 places with the newly created place
 *!
 !***> Delete newly created place
 
-!| RecordEndpointFixture |
+!| comment |
+| RecordEndpointFixture |
 | authToken | type | id | testDeleteRecord? | getStatusType? |
 | $adminAuthToken | place | $createdId | | OK |
 
 *!
 !***> Try to read deleted place
 
-!| RecordEndpointFixture |
+!| comment |
+| RecordEndpointFixture |
 | authToken | type | id | testReadRecord? | getStatusType? |
 | $adminAuthToken | place | $createdId | | NOT_FOUND |
 
 *!
 !***> List places - places with state DELETED is excluded
-
-
 
 !| RecordEndpointFixture |
 | authToken | type | testReadRecordList? | getStatusType? |

@@ -26,23 +26,28 @@ alvin-place:1720 is a fully described place with a name, alternative name, count
 | $adminAuthToken | place | alvin-place:22 | {"name":"authority","children":[{"name":"recordInfo","children":[{"name":"id","value":"alvin-place:22"},{"name":"type","children":[{"name":"linkedRecordType","value":"recordType"},{"name":"linkedRecordId","value":"place"}]},{"name":"createdBy","children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}]},{"name":"dataDivider","children":[{"name":"linkedRecordType","value":"system"},{"name":"linkedRecordId","value":"alvin"}]},{"name":"tsCreated","value":"2014-12-18 20:20:38.346"},{"name":"updated","children":[{"name":"updatedBy","children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}]},{"name":"tsUpdated","value":"2014-12-18 20:20:38.346"}],"repeatId":"0"},{"name":"updated","children":[{"name":"updatedBy","children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}]},{"name":"tsUpdated","value":"2014-12-18 20:21:20.880"}],"repeatId":"1"},{"name":"updated","children":[{"name":"updatedBy","children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"141414"}]},{"name":"tsUpdated","value":"2019-02-14 11:57:55.129"}],"repeatId":"2"}]},{"name":"name","children":[{"name":"namePart","children":[{"name":"value","value":"Linköping updated from Cora"}],"attributes":{"type":"defaultName"}}],"attributes":{"type":"authorized"}},{"name":"coordinates","children":[{"name":"latitude","value":"58.42"},{"name":"longitude","value":"15.62"}]},{"name":"identifier","children":[{"name":"identifierType","value":"waller"},{"name":"identifierValue","value":"1367"}],"repeatId":"0"},{"name":"country","value":"SE"}],"attributes":{"type":"place"}} | | OK |
 
 *!
-!***> Update alvin-place:1720 with a new alternative name written with special characters (arabic)
+!***> Update alvin-place:1720 with a new alternative name written with special characters (arabic) NOT IMPLEMENTED
 
-!| RecordEndpointFixture |
+!| comment |
+| RecordEndpointFixture |
 | authToken | type | id | json | testUpdateRecord? | getStatusType? |
 | $adminAuthToken | place | alvin-place:1720 | {"name":"authority","children":[{"name":"recordInfo","children":[{"name":"id","value":"alvin-place:1720"},{"name":"type","children":[{"name":"linkedRecordType","value":"recordType"},{"name":"linkedRecordId","value":"place"}]},{"name":"createdBy","children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"coraUser:4412566252284358"}]},{"name":"dataDivider","children":[{"name":"linkedRecordType","value":"system"},{"name":"linkedRecordId","value":"alvin"}]},{"name":"tsCreated","value":"2019-10-30 13:12:45.065"},{"name":"updated","children":[{"name":"updatedBy","children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}]},{"name":"tsUpdated","value":"2019-10-30 13:12:45.065"}],"repeatId":"0"},{"name":"updated","children":[{"name":"updatedBy","children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"coraUser:4412566252284358"}]},{"name":"tsUpdated","value":"2019-10-30 13:17:26.399"}],"repeatId":"1"}]},{"name":"name","children":[{"name":"namePart","children":[{"name":"value","value":"Ockelbo"}],"attributes":{"type":"defaultName"}}],"attributes":{"type":"authorized"}},{"name":"name","children":[{"name":"language","value":"swe"},{"name":"namePart","children":[{"name":"value","value":"Den andra kungliga huvudstaden"}],"attributes":{"type":"defaultName"}}],"attributes":{"type":"alternative"},"repeatId":"0"},{"name":"coordinates","children":[{"name":"latitude","value":"60.88974614783978"},{"name":"longitude","value":"16.717671898647126"}]},{"name":"country","value":"SE"},{"name":"name","children":[{"name":"language","value":"ara"},{"name":"namePart","children":[{"name":"value","value":"Gästriklands الإسكندرية"}],"attributes":{"type":"defaultName"}}],"attributes":{"type":"alternative"},"repeatId":"1"}],"attributes":{"type":"place"}} | | OK |
+
 *!
 !***> Read alvin-place:22 again to see that it is updated
 
 !| RecordEndpointFixture |
 | authToken | type | id | testReadRecord? | getStatusType? |
 | $adminAuthToken | place | alvin-place:22 | =~/"value":"Linköping updated from Cora"/ | OK |
-*!
-!***> Read alvin-place:1720 again to see that it is updated
 
-!| RecordEndpointFixture |
+*!
+!***> Read alvin-place:1720 again to see that it is updated NOT IMPLEMENTED
+
+!| comment |
+| RecordEndpointFixture |
 | authToken | type | id | testReadRecord? | getStatusType? |
 | $adminAuthToken | place | alvin-place:1720 | =~/"value":"Gästriklands الإسكندرية"/ | OK |
+
 *!
 !***> Restore original alvin-place:22 with new name
 
@@ -51,9 +56,11 @@ alvin-place:1720 is a fully described place with a name, alternative name, count
 | $adminAuthToken | place | alvin-place:22 | {"name":"authority","children":[{"name":"recordInfo","children":[{"name":"id","value":"alvin-place:22"},{"name":"type","children":[{"name":"linkedRecordType","value":"recordType"},{"name":"linkedRecordId","value":"place"}]},{"name":"createdBy","children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}]},{"name":"dataDivider","children":[{"name":"linkedRecordType","value":"system"},{"name":"linkedRecordId","value":"alvin"}]},{"name":"tsCreated","value":"2014-12-18 20:20:38.346"},{"name":"updated","children":[{"name":"updatedBy","children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}]},{"name":"tsUpdated","value":"2014-12-18 20:20:38.346"}],"repeatId":"0"},{"name":"updated","children":[{"name":"updatedBy","children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}]},{"name":"tsUpdated","value":"2014-12-18 20:21:20.880"}],"repeatId":"1"},{"name":"updated","children":[{"name":"updatedBy","children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"141414"}]},{"name":"tsUpdated","value":"2019-02-14 11:57:55.129"}],"repeatId":"2"}]},{"name":"name","children":[{"name":"namePart","children":[{"name":"value","value":"Linköping"}],"attributes":{"type":"defaultName"}}],"attributes":{"type":"authorized"}},{"name":"coordinates","children":[{"name":"latitude","value":"58.42"},{"name":"longitude","value":"15.62"}]},{"name":"identifier","children":[{"name":"identifierType","value":"waller"},{"name":"identifierValue","value":"1367"}],"repeatId":"0"},{"name":"country","value":"SE"}],"attributes":{"type":"place"}} | | OK |
 
 *!
-!***> Restore original alvin-place:1720 with new name
+!***> Restore original alvin-place:1720 with new name NOT IMPLEMENTED
 
-!| RecordEndpointFixture |
+!| comment |
+| RecordEndpointFixture |
 | authToken | type | id | json | testUpdateRecord? | getStatusType? |
 | $adminAuthToken | place | alvin-place:1720 | {"name":"authority","children":[{"name":"recordInfo","children":[{"name":"id","value":"alvin-place:1720"},{"name":"type","children":[{"name":"linkedRecordType","value":"recordType"},{"name":"linkedRecordId","value":"place"}]},{"name":"createdBy","children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"coraUser:4412566252284358"}]},{"name":"dataDivider","children":[{"name":"linkedRecordType","value":"system"},{"name":"linkedRecordId","value":"alvin"}]},{"name":"tsCreated","value":"2019-10-30 13:12:45.065"},{"name":"updated","children":[{"name":"updatedBy","children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"12345"}]},{"name":"tsUpdated","value":"2019-10-30 13:12:45.065"}],"repeatId":"0"},{"name":"updated","children":[{"name":"updatedBy","children":[{"name":"linkedRecordType","value":"user"},{"name":"linkedRecordId","value":"coraUser:4412566252284358"}]},{"name":"tsUpdated","value":"2019-10-30 13:17:26.399"}],"repeatId":"1"}]},{"name":"name","children":[{"name":"namePart","children":[{"name":"value","value":"Ockelbo"}],"attributes":{"type":"defaultName"}}],"attributes":{"type":"authorized"}},{"name":"name","children":[{"name":"language","value":"swe"},{"name":"namePart","children":[{"name":"value","value":"Den andra kungliga huvudstaden"}],"attributes":{"type":"defaultName"}}],"attributes":{"type":"alternative"},"repeatId":"0"},{"name":"coordinates","children":[{"name":"latitude","value":"60.88974614783978"},{"name":"longitude","value":"16.717671898647126"}]},{"name":"country","value":"SE"}],"attributes":{"type":"place"}} | | OK |
+
 *!
