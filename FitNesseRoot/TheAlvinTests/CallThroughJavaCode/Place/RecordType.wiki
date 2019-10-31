@@ -53,7 +53,7 @@ Check children of placeGroup
 
 !| MetadataLinkFixture |
 | linkedRecordType | linkedRecordId | getRepeatMin? | getRepeatMax? |
-| metadataGroup | recordInfoGroup | 1 | 1 |
+| metadataGroup | alvinRecordInfoGroup | 1 | 1 |
 | metadataGroup | namePlaceAuthorizedGroup | 1 | 1 |
 | metadataGroup | namePlaceAlternativeGroup | 0 | X |
 | metadataCollectionVariable | completeCountryCollectionVar | 0 | 1 |

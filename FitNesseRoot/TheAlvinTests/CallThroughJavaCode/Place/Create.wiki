@@ -9,18 +9,29 @@ It should be possible to create a new place using the REST API.
 !2 Test with new place
 !***> Create data of recordType place
 
+Fantasia has only a name.
+Nangijala has a name and coordinates.
+Atlantis has a name, a historic country and coordinates.
+Imaginationland has a name, a country, and coordinates.
+Konungariket Elgaland-Vargaland is a complete record with a name, an alternative name, country, historic country, and coordinates.
+
 !| RecordEndpointFixture |
 | authToken | type | json | testCreateRecordCreatedType? | getStatusType? | getCreatedId? |
-| $adminAuthToken | place | {"name":"authority","children":[{"name":"recordInfo","children":[{"name":"dataDivider","children":[{"name":"linkedRecordType","value":"system"},{"name":"linkedRecordId","value":"alvin"}]}]},{"name":"name","children":[{"name":"namePart","children":[{"name":"value","value":"Fitnesse place"}],"attributes":{"type":"defaultName"}}],"attributes":{"type":"authorized"}}],"attributes":{"type":"place"}} | place | CREATED | $createdId= |
-| $adminAuthToken | place | {"name":"authority","children":[{"name":"recordInfo","children":[{"name":"dataDivider","children":[{"name":"linkedRecordType","value":"system"},{"name":"linkedRecordId","value":"alvin"}]}]},{"name":"name","children":[{"name":"namePart","children":[{"name":"value","value":"En testplats för fitnesse"}],"attributes":{"type":"defaultName"}}],"attributes":{"type":"authorized"}},{"name":"coordinates","children":[{"name":"latitude","value":"57.26478712789165"},{"name":"longitude","value":"18.442056566675937"}]}],"attributes":{"type":"place"}} | place | CREATED | $createdId2= |
-
+| $adminAuthToken | place | {"name":"authority","children":[{"name":"recordInfo","children":[{"name":"dataDivider","children":[{"name":"linkedRecordType","value":"system"},{"name":"linkedRecordId","value":"alvin"}]}]},{"name":"name","children":[{"name":"namePart","children":[{"name":"value","value":"Fantasia"}],"attributes":{"type":"defaultName"}}],"attributes":{"type":"authorized"}}],"attributes":{"type":"place"}} | place | CREATED | $createdId= |
+| $adminAuthToken | place | {"name":"authority","children":[{"name":"recordInfo","children":[{"name":"dataDivider","children":[{"name":"linkedRecordType","value":"system"},{"name":"linkedRecordId","value":"alvin"}]}]},{"name":"name","children":[{"name":"namePart","children":[{"name":"value","value":"Nangijala"}],"attributes":{"type":"defaultName"}}],"attributes":{"type":"authorized"}},{"name":"coordinates","children":[{"name":"latitude","value":"57.26478712789165"},{"name":"longitude","value":"18.442056566675937"}]}],"attributes":{"type":"place"}} | place | CREATED | $createdId2= |
+| $adminAuthToken | place | {"name":"authority","children":[{"name":"recordInfo","children":[{"name":"dataDivider","children":[{"name":"linkedRecordType","value":"system"},{"name":"linkedRecordId","value":"alvin"}]}]},{"name":"name","children":[{"name":"namePart","children":[{"name":"value","value":"Atlantis"}],"attributes":{"type":"defaultName"}}],"attributes":{"type":"authorized"}},{"name":"historicCountry","value":"kingdomOfSweden"},{"name":"coordinates","children":[{"name":"latitude","value":"64.73664139557685"},{"name":"longitude","value":"18.217711445108307"}]}],"attributes":{"type":"place"}} | place | CREATED | $createdId3= |
+| $adminAuthToken | place | {"name":"authority","children":[{"name":"recordInfo","children":[{"name":"dataDivider","children":[{"name":"linkedRecordType","value":"system"},{"name":"linkedRecordId","value":"alvin"}]}]},{"name":"name","children":[{"name":"namePart","children":[{"name":"value","value":"Imaginationland"}],"attributes":{"type":"defaultName"}}],"attributes":{"type":"authorized"}},{"name":"country","value":"US"},{"name":"coordinates","children":[{"name":"latitude","value":"36.17003115949954"},{"name":"longitude","value":"-115.15594379860936"}]}],"attributes":{"type":"place"}} | place | CREATED | $createdId4= |
+| $adminAuthToken | place | {"name":"authority","children":[{"name":"recordInfo","children":[{"name":"dataDivider","children":[{"name":"linkedRecordType","value":"system"},{"name":"linkedRecordId","value":"alvin"}]}]},{"name":"name","children":[{"name":"namePart","children":[{"name":"value","value":"Konungariket Elgaland-Vargaland"}],"attributes":{"type":"defaultName"}}],"attributes":{"type":"authorized"}},{"name":"name","children":[{"name":"language","value":"swe"},{"name":"namePart","children":[{"name":"value","value":"Elgaland-Vargaland"}],"attributes":{"type":"defaultName"}}],"attributes":{"type":"alternative"},"repeatId":"0"},{"name":"country","value":"SE"},{"name":"historicCountry","value":"kingdomOfSweden"},{"name":"coordinates","children":[{"name":"latitude","value":"59.32689554837746"},{"name":"longitude","value":"18.07022421019233"}]}],"attributes":{"type":"place"}} | place | CREATED | $createdId5= |
 *!
-!***> Read newly created place as Json
+!***> Read newly created places as Json
 
 !| RecordEndpointFixture |
 | authToken | type | id | testReadRecord? | getStatusType? |
-| $adminAuthToken | place | $createdId | =~/"value":"Fitnesse place"/ | OK |
-
+| $adminAuthToken | place | $createdId | =~/"value":"Fantasia"/ | OK |
+| $adminAuthToken | place | $createdId2 | =~/"value":"Nangijala"/ | OK |
+| $adminAuthToken | place | $createdId3 | =~/"value":"Atlantis"/ | OK |
+| $adminAuthToken | place | $createdId4 | =~/"value":"Imaginationland"/ | OK |
+| $adminAuthToken | place | $createdId5 | =~/"value":"Konungariket Elgaland-Vargaland"/ | OK |
 *!
 !***> Read newly created place as Json missing data should be fixed NOT ACTIVE
 

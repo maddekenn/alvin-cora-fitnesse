@@ -10,6 +10,13 @@ Perform a search for places
 | $adminAuthToken | placeSearch | {"name":"placeSearch","children":[{"name":"include","children":[{"name":"includePart","children":[{"name":"placeSearchTerm","value":"**"}]}]}]} | | OK |
 
 *!
+!***> Test searching for a place with an alternative name containing special characters (arabic)
+
+!| RecordEndpointFixture |
+| authToken | searchId | json | testSearchRecord? | getStatusType? |
+| $adminAuthToken | placeSearch | {"name":"placeSearch","children":[{"name":"include","children":[{"name":"includePart","children":[{"name":"placeSearchTerm","value":"الإسكندرية"}]}]}]} | | OK |
+
+*!
 !***> Test searching for place by country code (ISO 3166-1 alpha-2) in free text
 
 !| RecordEndpointFixture |
@@ -24,12 +31,20 @@ Perform a search for places
 | $adminAuthToken | placeSearch | {"name":"placeSearch","children":[{"name":"include","children":[{"name":"includePart","children":[{"name":"placeCountrySearchTerm","value":"se"}]}]}]} | | OK |
 
 *!
+!***> Test searching for place by local identifier (alvin-place) in free text NOT IMPLEMENTED
+
+!| comment |
+| RecordEndpointFixture |
+| authToken | searchId | json | testSearchRecord? | getStatusType? |
+| $adminAuthToken | placeSearch | {"name":"placeSearch","children":[{"name":"include","children":[{"name":"includePart","children":[{"name":"placeSearchTerm","value":"alvin-place:2"}]}]}]} | | OK |
+
+*!
 !***> Test searching for place by country name in free text NOT IMPLEMENTED
 
 !| comment |
 | RecordEndpointFixture |
 | authToken | searchId | json | testSearchRecord? | getStatusType? |
-| $adminAuthToken | placeSearch | {"name":"placeSearch","children":[{"name":"include","children":[{"name":"includePart","children":[{"name":"placeSearchTerm","value":"sverige"}]}]}]} | =~/"data":\[\],"totalNo":"3"/ | OK |
+| $adminAuthToken | placeSearch | {"name":"placeSearch","children":[{"name":"include","children":[{"name":"includePart","children":[{"name":"placeSearchTerm","value":"sverige"}]}]}]} | | OK |
 
 *!
 !***> Test searching for place by country name in the search field for country NOT IMPLEMENTED
@@ -37,7 +52,25 @@ Perform a search for places
 !| comment |
 | RecordEndpointFixture |
 | authToken | searchId | json | testSearchRecord? | getStatusType? |
-| $adminAuthToken | placeSearch | {"name":"placeSearch","children":[{"name":"include","children":[{"name":"includePart","children":[{"name":"placeCountrySearchTerm","value":"sverige"}]}]}]} | =~/"data":\[\],"totalNo":"3"/ | OK |
+| $adminAuthToken | placeSearch | {"name":"placeSearch","children":[{"name":"include","children":[{"name":"includePart","children":[{"name":"placeCountrySearchTerm","value":"sverige"}]}]}]} | | OK |
+
+*!
+!***> Test searching for place by historic country name in free text (swedish and english) NOT IMPLEMENTED
+
+!| comment |
+| RecordEndpointFixture |
+| authToken | searchId | json | testSearchRecord? | getStatusType? |
+| $adminAuthToken | placeSearch | {"name":"placeSearch","children":[{"name":"include","children":[{"name":"includePart","children":[{"name":"placeSearchTerm","value":"vikingakungariket northumbria"}]}]}]} | =~/"data":\[\],"totalNo":"1"/ | OK |
+| $adminAuthToken | placeSearch | {"name":"placeSearch","children":[{"name":"include","children":[{"name":"includePart","children":[{"name":"placeSearchTerm","value":"viking kingdom of northumbria"}]}]}]} | =~/"data":\[\],"totalNo":"1"/ | OK |
+
+*!
+!***> Test searching for place by historic country name in the search field for country (swedish and english) NOT IMPLEMENTED
+
+!| comment |
+| RecordEndpointFixture |
+| authToken | searchId | json | testSearchRecord? | getStatusType? |
+| $adminAuthToken | placeSearch | {"name":"placeSearch","children":[{"name":"include","children":[{"name":"includePart","children":[{"name":"placeCountrySearchTerm","value":"vikingakungariket northumbria"}]}]}]} | =~/"data":\[\],"totalNo":"1"/ | OK |
+| $adminAuthToken | placeSearch | {"name":"placeSearch","children":[{"name":"include","children":[{"name":"includePart","children":[{"name":"placeCountrySearchTerm","value":"viking kingdom of northumbria"}]}]}]} | =~/"data":\[\],"totalNo":"1"/ | OK |
 
 *!
 !***> Test searching for special FitNesseSpecialPlace should not be found as it does not exist NOT ACTIVE
